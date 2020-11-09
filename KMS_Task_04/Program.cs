@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -18,26 +18,22 @@ namespace KMS_Task_04
             Random rnd = new Random();
             Random bossRnd = new Random();
             Random health = new Random();
-            int chooseWhoAttack = rnd.Next(1, 2);
+            int chooseWhoAttack = rnd.Next(1, 3);
             int bossAttack = rnd.Next(1, 4);
             int borningAttack = 30;
             int hp = 0;
             int tryToHealthCount = 0;
             int actionCount = 0;
+            int bossCount = 0;
 
-            Console.Write("Вы - обычный работяга, который работает на обычной работе.\nНо обычным утром, когда вы шли выпить обычного кофе перед работой \nна вас напал необычный неформал демон. ");
+            Console.Write("Вы - обычный работяга, который работает на обычной работе.\nНо обычным утром, когда вы шли выпить обычного кофе перед работой на вас напал необычный неформал демон. ");
             Console.WriteLine("Сражения не избежать.");
-            Console.WriteLine("\nСписок ваших возможностей:");
-            Console.WriteLine("1. Обычная атака - вы просто бьете демона обычным ударом.\nНачальный урон 30.");
-            Console.WriteLine("2. Эффектная атака - красиво.\nУрон 20.");
-            Console.WriteLine("3. Бросок камня.\nУрон 10.");
-            Console.WriteLine("4. Поход в больницу - восстанавливает немного жизней.\nВозвращает от 10 до 60 hp.");
-            Console.WriteLine("5. КиК ФлиК - ульта, заряжается 5 ходов.\nУрон 200.");
-            Console.WriteLine("6. Секция по боксу.\nУсиливает обычную атаку в 2 раза.");
+
+        Console.WriteLine("\nСписок ваших возможностей: \n1. Обычная атака - вы просто бьете демона обычным ударом. \n2. Эффектная атака - красиво. \n3. Бросок камня. \n4. Поход в больницу - восстанавливает немного жизней. \n5. КиК ФлиК - ульта, заряжается 5 ходов. \n6. Секция по боксу. ");
 
             while (true)
             {
-                Console.WriteLine($"\n     Ваше здоровье: {playerHealth} \n     Здоровье противника: {bossHealth}");
+                Console.WriteLine($"\n Ваше здоровье: {playerHealth} \n Здоровье противника: {bossHealth}");
                 if (chooseWhoAttack == 1)
                 {
                     Console.WriteLine("\n\n\nВаш очередь нападать!");
@@ -58,13 +54,13 @@ namespace KMS_Task_04
                     switch (playerAttack)
                     {
                         case (0):
-                            Console.WriteLine("\nСписок ваших атак: \n1. Обычная атака \n2. Эффектная атака \n3. Бросок камня \n4.Восстановление hp \n5.КиК ФлиК \n6.Бокс");
+                            Console.WriteLine("\nСписок ваших атак: \n1. Обычная атака \n2. Эффектная атака \n3. Бросок камня \n4.Восстановление hp \n5.КиК ФлиК \n6. Секция по боксу");
                             goto inputAttackErr;
                         case (1):
                             Console.Write("Вы совершили обычную атаку как обычный персонаж");
                             if (bossDodge != 6)
                             {
-                                Console.WriteLine($" и нанесли обычный урон. \nПротивник теряет {borningAttack}  hp");
+                                Console.WriteLine($" и нанесли обычный урон. \nПротивник теряет {borningAttack} hp");
                                 bossHealth -= borningAttack;
                             }
                             else
@@ -105,7 +101,7 @@ namespace KMS_Task_04
                         case (4):
                             if (tryToHealthCount < 2)
                             {
-                                Console.WriteLine("Вы легли в больницу, чтобы подлечиться.\nПротивник не может вас найти.\nА значит не может атаковать еще ход.");
+                                Console.WriteLine("Вы легли в больницу, чтобы подлечиться.\nПротивник не может вас найти, а значит не может атаковать еще ход.");
                                 hp = health.Next(10, 60);
                                 Console.WriteLine($"Вы получили {hp} hp");
                                 playerHealth += hp;
@@ -147,13 +143,16 @@ namespace KMS_Task_04
                             Console.WriteLine("Ну попытка была...");
                             break;
                     }
-                    actionCount += 1;
+                    actionCount +=
+
+                    1;
                     if (playerHealth > 300)
                     {
                         playerHealth = 300;
                     }
                 }
                 else
+          
                 {
                     Console.WriteLine("\n\n\nАтака противника!");
                     if (bossAttack == 0)
@@ -162,11 +161,11 @@ namespace KMS_Task_04
                     }
                     else if (playerAttack != 3)
                     {
-                        bossAttack = bossRnd.Next(0, 4);
+                        bossAttack = bossRnd.Next(0, 5);
                     }
                     else if (bossAttack == 6)
                     {
-                        bossAttack = bossRnd.Next(1, 4);
+                        bossAttack = bossRnd.Next(1, 5);
                     }
                     else
                     {
@@ -176,10 +175,10 @@ namespace KMS_Task_04
                     switch (bossAttack)
                     {
                         case (0):
-                            Console.WriteLine("Черт хотел восстановить жизни. \nНо его не приняли в поликлинике без полиса. \nОн пропускает ход.");
+                            Console.WriteLine("Черт хотел восстановить жизни, но его не приняли в поликлинике без полиса. Он пропускает ход.");
                             break;
                         case (1):
-                            Console.WriteLine("Черт ударил вас. \nЭто наверняка больно, он ведь бьет с нечеловеческой силой.");
+                            Console.WriteLine("Черт ударил вас. Это наверняка больно, он ведь бьет с нечеловеческой силой.");
                             Console.WriteLine("Вы теряете 40 hp");
                             playerHealth -= 40;
                             break;
@@ -199,7 +198,7 @@ namespace KMS_Task_04
                             playerHealth -= 10;
                             break;
                         case (5):
-                            Console.WriteLine("В вас в ответ на камень кинули булыжником. \nНе стоит бросаться предметами в следующий раз.");
+                            Console.WriteLine("В вас в ответ на камень кинули булыжником. Не стоит бросаться предметами в следующий раз.");
                             Console.WriteLine("Вы теряете 150 hp и уверенность в себе");
                             playerHealth -= 150;
                             break;
@@ -215,7 +214,25 @@ namespace KMS_Task_04
                         bossHealth = 666;
                     }
 
-                    chooseWhoAttack = 1;
+                    if (playerAttack == 2)
+                    {
+                        if (bossCount == 0)
+                        {
+                            chooseWhoAttack = 2;
+                            bossCount += 1;
+                        }
+                        else
+                        {
+                            chooseWhoAttack = 1;
+                            bossCount = 0;
+                        }
+                        
+                    }
+                    else
+                    {
+                        chooseWhoAttack = 1;
+                    }
+                    
 
                 }
                 if (bossHealth <= 0) break;
